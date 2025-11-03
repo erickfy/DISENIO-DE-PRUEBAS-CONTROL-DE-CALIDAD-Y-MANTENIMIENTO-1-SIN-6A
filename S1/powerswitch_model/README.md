@@ -1,27 +1,41 @@
 # Demo PyModel en Codespaces
 
-Este repo demuestra PyModel (https://github.com/zlorb/PyModel) corriendo en GitHub Codespaces.
+Este repositorio demuestra PyModel (https://github.com/zlorb/PyModel) corriendo en GitHub Codespaces.
 
 ## ¿Qué es PyModel?
 
-PyModel es un framework de *model-based testing* en Python: defines un modelo del sistema (estados, acciones permitidas, etc.)
-y PyModel genera y ejecuta pruebas automáticamente con el comando `pmt` y las orquesta con `trun`.  
-Incluye soporte para elegir acciones habilitadas, limpiar el estado, y reportar si el sistema termina en un estado aceptable.
+PyModel es un framework de *model-based testing* (pruebas basadas en modelos).  
+En lugar de escribir casos de prueba manualmente, defines el comportamiento esperado del sistema como un **modelo**: estado interno, acciones permitidas y reglas de cuándo se pueden ejecutar.  
+Luego PyModel genera y ejecuta automáticamente secuencias de acciones válidas y verifica si el sistema termina en un estado correcto.
 
-## ¿Qué hay aquí?
+Nosotros usamos el ejecutor de pruebas de PyModel (`pmt`) para correr el modelo y validar su comportamiento.
 
-- `S1/PowerSwitch.py`: el modelo de un interruptor ON/OFF.
-- `S1/test.py`: casos de prueba que llaman a `pmt`.
-- `.devcontainer/devcontainer.json`: configuración para que Codespaces instale PyModel automáticamente.
-- `requirements.txt`: dependencias.
+## ¿Qué hay en este repo?
 
+- `S1/powerswitch_model/PowerSwitch.py`  
+  Modelo del sistema. Representa un interruptor con estado `power` (encendido/apagado), acciones `PowerOn()` y `PowerOff()`, restricciones de uso (no puedes apagar si ya está apagado, etc.) y una función `Accepting()` que dice si el estado final es válido.  
+  En este caso, el estado válido es quedar apagado.
 
-## Verificación y ejecución
+- `S1/powerswitch_model/test.py`  
+  Script que ejecuta varios escenarios de prueba usando PyModel (`pmt`).  
+  Este script:
+  - llama a `pmt` con distintas configuraciones (normal, solo PowerOn, prohibir PowerOff, múltiples corridas, etc.),
+  - prepara el entorno para que `pmt` pueda importar `PowerSwitch.py`,
+  - y aplica una compatibilidad para Python 3.12 (porque PyModel fue escrito para versiones antiguas de Python y usa `inspect.getargspec`).
+
+  Al final imprime la salida de cada corrida de prueba.
+
+- `.devcontainer/devcontainer.json`  
+  Configuración de Codespaces.  
+  Usa una imagen con Python 3.12, instala PyModel desde `zlorb/PyModel` y deja listo el entorno automáticamente dentro del contenedor.
+
+- `requirements.txt`  
+  Dependencias del proyecto (incluye PyModel y graphviz).
+
+## ¿Cómo ejecutarlo en Codespaces?
+
+Dentro del Codespace:
+
 ```bash
-# 1. Verifica que PyModel está instalado
-pmt --help
-
-# 2. Corre los tests del modelo PowerSwitch usando trun
 cd S1/powerswitch_model
 python test.py
-```
