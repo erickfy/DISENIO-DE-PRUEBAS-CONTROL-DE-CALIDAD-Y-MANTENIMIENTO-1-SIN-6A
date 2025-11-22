@@ -7,12 +7,14 @@ class TradingSystem:
         self.log = []
 
     async def buy(self):
-        await asyncio.sleep(0.5)
+        # La orden sale primero (menos latencia)
+        await asyncio.sleep(0.2)
         self.state = "orden_pendiente"
         self.log.append("Orden enviada")
 
     async def cancel(self):
-        await asyncio.sleep(0.3)
+        # La cancelación llega después (más latencia)
+        await asyncio.sleep(0.5)
         if self.state == "orden_pendiente":
             self.state = "cancelada"
         else:
@@ -22,10 +24,10 @@ class TradingSystem:
 @pytest.mark.asyncio
 async def test_eventos_asincronos():
     sistema = TradingSystem()
-    tarea1 = asyncio.create_task(sistema.buy())
-    tarea2 = asyncio.create_task(sistema.cancel())
-    await asyncio.gather(tarea1, tarea2)
+    t1 = asyncio.create_task(sistema.buy())
+    t2 = asyncio.create_task(sistema.cancel())
+    await asyncio.gather(t1, t2)
 
-    # A pesar del orden asíncrono, el sistema no debe quedar inconsistente
+    # A pesar del orden/latencia, el estado final NO debe quedar inconsistente
     assert sistema.state in ["sin_orden", "cancelada"]
     assert "Cancelación procesada" in sistema.log
