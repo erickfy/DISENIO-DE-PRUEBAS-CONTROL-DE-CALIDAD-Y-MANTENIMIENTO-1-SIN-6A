@@ -4,6 +4,7 @@ import os
 from radon.complexity import cc_visit, cc_rank
 
 
+# Range of complexity: https://radon.readthedocs.io/en/latest/api.html#radon.complexity.cc_rank
 def analyze_file(filepath: str):
     """Analiza la complejidad ciclomática de un solo archivo .py"""
     with open(filepath, "r", encoding="utf-8") as f:
