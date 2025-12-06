@@ -26,8 +26,7 @@ def main() -> None:
     run(["wily", "rank", target, "maintainability.mi"])
 
     # 3) Reporte detallado del archivo de alta complejidad
-    # run(["wily", "report", "forum/experiments/cc_high.py"])
-    run(["wily", "report"])
+    run(["wily", "report", "forum/experiments/cc_high.py"])
 
 
 if __name__ == "__main__":
