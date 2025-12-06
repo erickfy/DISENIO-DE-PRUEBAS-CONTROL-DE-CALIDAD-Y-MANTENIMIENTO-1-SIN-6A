@@ -1,2 +1,8 @@
-# DISEÑO-DE-PRUEBAS-CONTROL-DE-CALIDAD-Y-MANTENIMIENTO-1-SIN-6A
-Repositorio del curso DISEÑO DE PRUEBAS, CONTROL DE CALIDAD Y MANTENIMIENTO 1-SIN-6A OCT2025
+# Week 4
+
+### Useful commands
+
+```bash
+poetry run python forum/radon_example.py
+poetry run python forum/wily_example.py
+```

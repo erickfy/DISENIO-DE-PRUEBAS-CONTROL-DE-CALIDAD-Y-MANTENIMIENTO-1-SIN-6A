@@ -1,5 +1,5 @@
 import pytest
-from  forum.responses.complexity_exe3 import calcular_tarifa_original, refacto_calcular_tarifa
+from  forum.responses.refactor import calcular_tarifa_original, refacto_calcular_tarifa
 
 
 @pytest.mark.parametrize(
@@ -17,7 +17,7 @@ def test_calcular_tarifa_equivalente(edad, es_estudiante, es_senior, dia_semana,
     """La versión refactorizada debe dar el mismo resultado que la original."""
     original = calcular_tarifa_original(edad, es_estudiante, es_senior, dia_semana, hora)
     refactor = refacto_calcular_tarifa(edad, es_estudiante, es_senior, dia_semana, hora)
-    # redondeamos por si hay pequeños errores de flotantes
+
     assert round(original, 4) == round(refactor, 4)
 
 

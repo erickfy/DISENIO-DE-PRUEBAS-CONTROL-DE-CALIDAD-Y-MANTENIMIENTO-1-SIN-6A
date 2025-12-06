@@ -63,7 +63,9 @@ Tarea:
 Calcula la CC actual
 Refactoriza para reducir CC a ≤ 5
 Mantén la funcionalidad idéntica
-Escribe tests que demuestren equivalencia 4) EJERCICIOS
+Escribe tests que demuestren equivalencia
+
+4. EJERCICIOS
 
 Ejercicio 1: Identificar Caminos DU ⭐
 def calcular_impuesto(salario, dependientes, es_jubilado):
