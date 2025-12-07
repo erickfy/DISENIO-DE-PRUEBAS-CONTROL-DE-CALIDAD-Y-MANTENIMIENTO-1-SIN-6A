@@ -1,12 +1,10 @@
-### 3. Simulación de una API Fibonacci con Locust
+## 3. Simulación de una API Fibonacci con Locust
 
-#### Comandos para inicializar en Codespaces
-```bash
-locust -f locustfile.py --host=http://localhost:8000
-python -m w5.api
-```
+## [URL de Locust](http://localhost:8089)
 
-Se configuró un entorno en Docker que levanta una pequeña API en Flask y Locust para simular carga sobre dos endpoints de Fibonacci:
+#### Detalles
+
+Se ha configurado un entorno en Docker que levanta una pequeña API en Flask y Locust para simular carga sobre dos endpoints de Fibonacci:
 
 - `GET /fib?n=10`
   - Calcula la secuencia de Fibonacci de longitud 10 usando una implementación iterativa.
@@ -51,3 +49,17 @@ Ejecución de la prueba y métricas:
 Ejecución en Docker (API + Locust):
 
 ![Logs de Docker con API Fibonacci y Locust](w5/img/fib_locust_docker_terminal.png)
+
+
+#### ¿Como ver en codespaces?
+```txt
+Cmd/Ctrl + Shift + P
+Escribir: “View Creation Log” → ahí ver los logs (postStartCommand).
+Dar en Cmd + click en http://0.0.0.0:8089
+```
+
+#### Comandos para inicializar en Codespaces (por defecto ya esta configurado en .devcontainer/devocontainer.json -> postStartCommand)
+```bash
+locust -f locustfile.py --host=http://localhost:8000
+python -m w5.api
+```
