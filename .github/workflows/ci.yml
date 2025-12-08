@@ -4,7 +4,7 @@ name: Java CI - Tests, Coverage & Static Analysis
 
 on:
   push:
-    branches: ["main", "master"]
+    branches: ["main", "autonomo2", "auto2", "a2"]
   pull_request:
 
 permissions:
