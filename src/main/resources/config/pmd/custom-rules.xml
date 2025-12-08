@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="uide-custom-rules"
+    xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.github.io/schema/ruleset_2_0_0.xsd">
+
+    <description>
+    Reglas personalizadas para el proyecto de búsqueda binaria (UIDE).
+    Incluye algunas reglas específicas para este laboratorio.
+  </description>
+
+    <!-- https://maven.apache.org/plugins/maven-pmd-plugin/examples/usingRuleSets.html -->
+
+    <!--
+    https://docs.pmd-code.org/latest/pmd_rules_java_bestpractices.html#exhaustiveswitchhasdefault -->
+    <rule ref="category/java/bestpractices.xml/ExhaustiveSwitchHasDefault" />
+    <!-- https://docs.pmd-code.org/latest/pmd_rules_java_design.html#excessiveimports -->
+    <rule ref="category/java/design.xml/ExcessiveImports" />
+    <!-- https://docs.pmd-code.org/latest/pmd_rules_java_design.html#excessiveparameterlist -->
+    <rule ref="category/java/design.xml/ExcessiveParameterList" />
+
+    <!-- https://docs.pmd-code.org/latest/pmd_rules_java_design.html#excessivepubliccount -->
+    <rule ref="category/java/design.xml/ExcessivePublicCount" />
+
+    <!-- Ejemplo: marcar métodos muy complejos -->
+    <rule ref="category/java/design.xml/CyclomaticComplexity">
+        <properties>
+            <!-- Umbral para reportar métodos complejos.
+                 Por defecto es 10; lo bajamos a 1 para que
+                 *cualquier* método con CC >= 1 aparezca y
+                 ver la CC de la búsqueda binaria. -->
+            <property name="methodReportLevel" value="1" />
+            <!-- Reporte de clases -->
+            <property name="classReportLevel" value="1" />
+        </properties>
+    </rule>
+
+</ruleset>

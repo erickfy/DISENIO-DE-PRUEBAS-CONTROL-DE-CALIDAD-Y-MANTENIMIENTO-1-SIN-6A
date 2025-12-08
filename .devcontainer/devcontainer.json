@@ -1,0 +1,15 @@
+{
+  "name": "uide-binarysearch-testing-java",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "settings": {
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "postCreateCommand": "mvn -q -DskipTests=true clean package || true",
+  "remoteUser": "vscode"
+}

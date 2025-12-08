@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System name="CineTicketingDOE">
+  <Parameters>
+    <Parameter id="0" name="UserType" type="1">
+      <values>
+        <value>U1_Invitado</value>
+        <value>U2_Registrado</value>
+        <value>U3_Premium</value>
+        <value>U4_Admin</value>
+        <value>U5_MenorTutelado</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="1" name="Platform" type="1">
+      <values>
+        <value>P1_WebDesktop</value>
+        <value>P2_WebMobile</value>
+        <value>P3_AndroidApp</value>
+        <value>P4_iOSApp</value>
+        <value>P5_Kiosk</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="3" name="PaymentMethod" type="1">
+      <values>
+        <value>M1_Credito</value>
+        <value>M2_Debito</value>
+        <value>M3_Ewallet</value>
+        <value>M4_PayPal</value>
+        <value>M5_Transferencia</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="4" name="FunctionType" type="1">
+      <values>
+        <value>F1_2D</value>
+        <value>F2_3D</value>
+        <value>F3_4D</value>
+        <value>F4_EstrenoMedianoche</value>
+        <value>F5_PromoMatinee</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="5" name="DiscountType" type="1">
+      <values>
+        <value>D1_SinDescuento</value>
+        <value>D2_CuponPorcentaje</value>
+        <value>D3_CuponFijo</value>
+        <value>D4_Estudiante</value>
+        <value>D5_BancoAliado</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+  </Parameters>
+  <OutputParameters />
+  <Relations />
+  <Constraints />
+</System>
+
