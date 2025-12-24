@@ -13,12 +13,18 @@
       ]
     }
   },
-  "forwardPorts": [8089],
+  "forwardPorts": [8000, 8089],
   "portsAttributes": {
+    "8000": {
+      "label": "Fibonacci API",
+      "onAutoForward": "openBrowser"
+    },
     "8089": {
       "label": "Locust UI",
       "onAutoForward": "openBrowser"
     }
   },
-  "postCreateCommand": "pip install -r requirements.txt"
+  "postCreateCommand": "pip install -r requirements.txt",
+  "postStartCommand": "python -m w5.api & locust -f locustfile.py --host=http://localhost:8000"
+
 }
